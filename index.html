@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tempra · Confidentialité et aide</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Tempra : politique de confidentialité et aide. Privacy policy and help.">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: one reading column, a sticky bar with the language switch and the two sections (privacy, help) */
+:root {
+  --bg: #F6F8F7; --surface: #FFFFFF; --fg: #16201B; --muted: #5C6A63; --line: #DCE3DF;
+  --accent: #128A4F; --accent-soft: #E3F4EA; --warn: #9A5B00; --warn-soft: #FFF3DF;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #101418; --surface: #1A2027; --fg: #EEF2F0; --muted: #98A49E; --line: #2A333B;
+  --accent: #3DDC84; --accent-soft: #173326; --warn: #FFB547; --warn-soft: #33281A; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #101418; --surface: #1A2027; --fg: #EEF2F0; --muted: #98A49E; --line: #2A333B;
+  --accent: #3DDC84; --accent-soft: #173326; --warn: #FFB547; --warn-soft: #33281A; color-scheme: dark }
+
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 720px; margin: 0 auto; padding-block: 0 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  border-bottom: 1px solid var(--line); }
+.bar-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.brand { font-family: var(--display); font-weight: 700; font-size: 17px; letter-spacing: 0.01em; display: flex; align-items: center; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+.nav a, .lang button { font: 500 14px var(--body); color: var(--muted); text-decoration: none; padding: 6px 10px; border-radius: 8px; }
+.nav a:hover { color: var(--fg); background: var(--surface); }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 10px; padding: 2px; }
+.lang button { background: none; border: 0; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--accent-soft); color: var(--fg); }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+h1 { font-family: var(--display); font-size: clamp(28px, 6vw, 40px); line-height: 1.15; margin: 40px 0 8px; text-wrap: balance; }
+h2 { font-family: var(--display); font-size: 24px; margin: 48px 0 8px; text-wrap: balance; scroll-margin-top: 80px; }
+h3 { font-size: 16px; font-weight: 600; margin: 28px 0 6px; }
+p, li { max-width: 65ch; }
+p { margin: 0 0 12px; }
+ul { padding-left: 20px; margin: 0 0 12px; }
+li { margin-bottom: 6px; }
+.lede { color: var(--muted); font-size: 17px; }
+.meta { font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 24px 0 8px; }
+.chip { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.chip b { display: block; font-family: var(--display); font-size: 15px; color: var(--accent); }
+.chip span { font-size: 13px; color: var(--muted); }
+.table-wrap { overflow-x: auto; margin: 8px 0 16px; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
+.note { background: var(--warn-soft); color: var(--fg); border-radius: 12px; padding: 14px 16px; margin: 20px 0; font-size: 15px; }
+.note b { color: var(--warn); }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin-bottom: 8px; }
+summary { cursor: pointer; font-weight: 600; }
+details p, details ol { margin-top: 10px; }
+.contact { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; padding: 14px 16px; }
+.contact code { font: 500 15px var(--body); user-select: all; }
+.contact button { font: 600 13px var(--body); border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 56px 0 0; }
+[lang="en"] [data-l="fr"], [lang="fr"] [data-l="en"] { display: none !important; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+</head>
+<body>
+<div id="root" lang="fr">
+  <header class="bar">
+    <div class="bar-inner">
+      <div class="brand"><img src="favicon.svg" alt="" width="22" height="22" style="border-radius:6px">Tempra</div>
+      <nav class="nav">
+        <a href="#privacy"><span data-l="fr">Confidentialité</span><span data-l="en">Privacy</span></a>
+        <a href="#support"><span data-l="fr">Aide</span><span data-l="en">Help</span></a>
+      </nav>
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" id="btn-fr" aria-pressed="true">FR</button>
+        <button type="button" id="btn-en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- ============ CONFIDENTIALITÉ / PRIVACY ============ -->
+    <section>
+      <h1 id="privacy">
+        <span data-l="fr">Politique de confidentialité</span>
+        <span data-l="en">Privacy policy</span>
+      </h1>
+      <p class="meta"><span data-l="fr">Dernière mise à jour : 15 novembre 2026</span><span data-l="en">Last updated: 15 November 2026</span></p>
+
+      <p class="lede" data-l="fr">Tempra est un carnet d'entraînement pour iPhone et Apple Watch. Il calcule ta récupération, ton effort et ton énergie à partir de tes séances et d'Apple Santé. Tout est calculé sur ton appareil : nous ne recevons aucune de tes données.</p>
+      <p class="lede" data-l="en">Tempra is a training log for iPhone and Apple Watch. It calculates your recovery, strain and energy from your workouts and Apple Health. Everything is calculated on your device: we never receive any of your data.</p>
+
+      <div class="summary">
+        <div class="chip"><b data-l="fr">Pas de compte</b><b data-l="en">No account</b><span data-l="fr">ni inscription</span><span data-l="en">no sign-up</span></div>
+        <div class="chip"><b data-l="fr">Pas de serveur</b><b data-l="en">No server</b><span data-l="fr">rien n'est envoyé</span><span data-l="en">nothing is sent</span></div>
+        <div class="chip"><b data-l="fr">Pas de pub</b><b data-l="en">No ads</b><span data-l="fr">ni pistage</span><span data-l="en">no tracking</span></div>
+        <div class="chip"><b data-l="fr">Pas de revente</b><b data-l="en">Never sold</b><span data-l="fr">ni partage</span><span data-l="en">or shared</span></div>
+      </div>
+
+      <h2><span data-l="fr">Ce que l'app utilise et où ça reste</span><span data-l="en">What the app uses and where it stays</span></h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th><span data-l="fr">Donnée</span><span data-l="en">Data</span></th>
+            <th><span data-l="fr">Pourquoi</span><span data-l="en">Why</span></th>
+            <th><span data-l="fr">Où</span><span data-l="en">Where</span></th>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td><span data-l="fr">Séances, séries, charges, notes, ressentis</span><span data-l="en">Workouts, sets, loads, notes, how you felt</span></td>
+              <td><span data-l="fr">Ton carnet, tes records, ta progression</span><span data-l="en">Your log, records and progress</span></td>
+              <td><span data-l="fr">iPhone et montre</span><span data-l="en">iPhone and watch</span></td>
+            </tr>
+            <tr>
+              <td><span data-l="fr">Apple Santé (lecture) : sommeil, fréquence cardiaque, VFC, respiration, oxygène, température au poignet, pas, étages, temps debout, énergie active, entraînements, date de naissance</span><span data-l="en">Apple Health (read): sleep, heart rate, HRV, breathing, oxygen, wrist temperature, steps, floors, standing time, active energy, workouts, date of birth</span></td>
+              <td><span data-l="fr">Scores de récupération, d'effort et d'énergie ; la date de naissance sert à estimer ta fréquence cardiaque maximale</span><span data-l="en">Recovery, strain and energy scores; date of birth is used to estimate your maximum heart rate</span></td>
+              <td><span data-l="fr">iPhone</span><span data-l="en">iPhone</span></td>
+            </tr>
+            <tr>
+              <td><span data-l="fr">Apple Santé (écriture) : tes séances de musculation</span><span data-l="en">Apple Health (write): your strength workouts</span></td>
+              <td><span data-l="fr">L'Apple Watch enregistre la séance et ta fréquence cardiaque</span><span data-l="en">The Apple Watch records the workout and your heart rate</span></td>
+              <td><span data-l="fr">Apple Santé</span><span data-l="en">Apple Health</span></td>
+            </tr>
+            <tr>
+              <td><span data-l="fr">Blessures, exercices du kiné, suivi post-opératoire</span><span data-l="en">Injuries, physio exercises, post-surgery tracking</span></td>
+              <td><span data-l="fr">Éviter les exercices qui gênent, suivre ta rééducation</span><span data-l="en">Avoid exercises that bother you, track your rehab</span></td>
+              <td><span data-l="fr">iPhone</span><span data-l="en">iPhone</span></td>
+            </tr>
+            <tr>
+              <td><span data-l="fr">Composition corporelle (PDF que tu importes)</span><span data-l="en">Body composition (PDF you import)</span></td>
+              <td><span data-l="fr">Suivre ton évolution</span><span data-l="en">Track how you change</span></td>
+              <td><span data-l="fr">iPhone</span><span data-l="en">iPhone</span></td>
+            </tr>
+            <tr>
+              <td><span data-l="fr">Calendrier (si tu l'autorises)</span><span data-l="en">Calendar (if you allow it)</span></td>
+              <td><span data-l="fr">Trouver un créneau libre ; ajouter ta séance seulement si tu le demandes</span><span data-l="en">Find a free slot; add your workout only when you ask</span></td>
+              <td><span data-l="fr">Ton calendrier</span><span data-l="en">Your calendar</span></td>
+            </tr>
+            <tr>
+              <td><span data-l="fr">Appareil photo et photos (si tu l'utilises)</span><span data-l="en">Camera and photos (if you use them)</span></td>
+              <td><span data-l="fr">Photographier les machines et le plan de ta salle</span><span data-l="en">Photograph your gym's machines and map</span></td>
+              <td><span data-l="fr">iPhone</span><span data-l="en">iPhone</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3><span data-l="fr">Données d'Apple Santé</span><span data-l="en">Apple Health data</span></h3>
+      <p data-l="fr">Les données lues dans Apple Santé servent uniquement à calculer tes scores dans l'app. Elles ne sont jamais envoyées sur internet, jamais utilisées pour de la publicité et jamais vendues ni partagées. Tu choisis ce que l'app peut lire dans Réglages › Santé › Accès aux données et appareils.</p>
+      <p data-l="en">Data read from Apple Health is used only to calculate your scores in the app. It is never sent over the internet, never used for advertising, and never sold or shared. You choose what the app can read in Settings › Health › Data Access &amp; Devices.</p>
+
+      <h3><span data-l="fr">Sauvegardes et exports</span><span data-l="en">Backups and exports</span></h3>
+      <p data-l="fr">L'app crée un fichier de sauvegarde ou un export (tableau, données santé) uniquement quand tu le demandes. C'est toi qui choisis où l'enregistrer ou à qui l'envoyer : iCloud Drive, un e-mail, une autre app. Ces services suivent alors leurs propres règles de confidentialité.</p>
+      <p data-l="en">The app creates a backup file or an export (spreadsheet, health data) only when you ask. You decide where to save it or who to send it to: iCloud Drive, an email, another app. Those services then follow their own privacy rules.</p>
+
+      <h3><span data-l="fr">Liens externes</span><span data-l="en">External links</span></h3>
+      <p data-l="fr">Certains boutons ouvrent un site dans ton navigateur : vidéos de démonstration sur YouTube, fiches des fabricants de machines. L'app n'envoie à ces sites que le nom de l'exercice ou de la machine recherché.</p>
+      <p data-l="en">Some buttons open a website in your browser: demo videos on YouTube, machine manufacturer pages. The app only sends these sites the name of the exercise or machine you're looking up.</p>
+
+      <h3><span data-l="fr">Notifications</span><span data-l="en">Notifications</span></h3>
+      <p data-l="fr">Les rappels (séance du jour, questionnaire du matin, fin de repos) sont programmés sur ton iPhone. Aucun serveur ne les envoie.</p>
+      <p data-l="en">Reminders (today's workout, morning check-in, end of rest) are scheduled on your iPhone. No server sends them.</p>
+
+      <h3><span data-l="fr">Supprimer tes données</span><span data-l="en">Deleting your data</span></h3>
+      <p data-l="fr">Supprimer l'app de ton iPhone et de ta montre efface toutes ses données. Les séances déjà enregistrées dans Apple Santé restent dans Santé, où tu peux les supprimer. Comme nous ne détenons aucune donnée te concernant, nous n'avons rien à corriger, exporter ou effacer de notre côté.</p>
+      <p data-l="en">Deleting the app from your iPhone and watch erases all its data. Workouts already saved to Apple Health stay in Health, where you can delete them. Since we hold no data about you, there is nothing for us to correct, export or erase on our side.</p>
+
+      <div class="note">
+        <b data-l="fr">Santé.</b><b data-l="en">Health.</b>
+        <span data-l="fr">Tempra n'est pas un dispositif médical. Ses scores et conseils sont des repères pour l'entraînement et ne remplacent pas l'avis d'un médecin, d'un chirurgien ou d'un kiné.</span>
+        <span data-l="en">Tempra is not a medical device. Its scores and tips are training guidelines and don't replace advice from a doctor, surgeon or physiotherapist.</span>
+      </div>
+
+      <h3><span data-l="fr">Changements</span><span data-l="en">Changes</span></h3>
+      <p data-l="fr">Si l'app se met un jour à envoyer des données hors de ton appareil (par exemple une synchronisation), cette page sera mise à jour avant, et l'app te demandera ton accord.</p>
+      <p data-l="en">If the app ever starts sending data off your device (for example for syncing), this page will be updated first, and the app will ask for your consent.</p>
+    </section>
+
+    <hr>
+
+    <!-- ============ AIDE / HELP ============ -->
+    <section>
+      <h2 id="support"><span data-l="fr">Aide</span><span data-l="en">Help</span></h2>
+
+      <details>
+        <summary><span data-l="fr">Mes scores restent vides</span><span data-l="en">My scores stay empty</span></summary>
+        <p data-l="fr">Vérifie que l'app a accès à Apple Santé : Réglages › Santé › Accès aux données et appareils › Tempra › tout activer. Il faut aussi porter ton Apple Watch la nuit : la récupération a besoin d'au moins 5 nuits mesurées sur 30 jours.</p>
+        <p data-l="en">Check that the app can access Apple Health: Settings › Health › Data Access &amp; Devices › Tempra › turn everything on. You also need to wear your Apple Watch at night: recovery needs at least 5 measured nights in the last 30 days.</p>
+      </details>
+
+      <details>
+        <summary><span data-l="fr">La séance ne s'affiche pas sur la montre</span><span data-l="en">The workout doesn't show on the watch</span></summary>
+        <p data-l="fr">Ouvre l'app sur l'iPhone, lance la séance, puis ouvre l'app sur la montre. Les deux doivent être à proximité, Bluetooth activé. Si la montre reste bloquée, ferme l'app sur la montre et rouvre-la.</p>
+        <p data-l="en">Open the app on your iPhone, start the workout, then open the app on your watch. Both need to be nearby with Bluetooth on. If the watch gets stuck, close the app on the watch and reopen it.</p>
+      </details>
+
+      <details>
+        <summary><span data-l="fr">Je change d'iPhone : comment garder mes données ?</span><span data-l="en">I'm changing iPhone: how do I keep my data?</span></summary>
+        <p data-l="fr">Dans l'app : Moi › Sauvegarde › Créer une sauvegarde, puis enregistre le fichier dans iCloud Drive. Sur le nouvel iPhone : Moi › Sauvegarde › Restaurer une sauvegarde.</p>
+        <p data-l="en">In the app: Me › Backup › Create a backup, then save the file to iCloud Drive. On the new iPhone: Me › Backup › Restore a backup.</p>
+      </details>
+
+      <details>
+        <summary><span data-l="fr">Les rappels n'arrivent pas</span><span data-l="en">Reminders don't arrive</span></summary>
+        <p data-l="fr">Réglages › Notifications › Tempra › Autoriser les notifications. Les rappels sont reprogrammés à chaque ouverture de l'app.</p>
+        <p data-l="en">Settings › Notifications › Tempra › Allow Notifications. Reminders are rescheduled each time you open the app.</p>
+      </details>
+
+      <details>
+        <summary><span data-l="fr">La jauge d'énergie me semble fausse</span><span data-l="en">The energy gauge seems wrong</span></summary>
+        <p data-l="fr">Les 15 premiers jours, l'app apprend sur toi : réponds aux questions d'énergie et au questionnaire du matin. Tu peux tout recommencer dans Moi › Ce que l'app a appris.</p>
+        <p data-l="en">For the first 15 days, the app learns about you: answer the energy questions and the morning check-in. You can start over in Me › What the app has learned.</p>
+      </details>
+
+      <h3><span data-l="fr">Nous contacter</span><span data-l="en">Contact us</span></h3>
+      <p data-l="fr">Un bug, une idée, une question : écris-nous, nous répondons en général sous 48 heures.</p>
+      <p data-l="en">A bug, an idea, a question: write to us, we usually reply within 48 hours.</p>
+      <div class="contact">
+        <code id="email">contact.tempraapp@gmail.com</code>
+        <button type="button" id="copy"><span data-l="fr">Copier</span><span data-l="en">Copy</span></button>
+        <span id="copied" class="meta" hidden><span data-l="fr">Adresse copiée</span><span data-l="en">Address copied</span></span>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById('root');
+  function setLang(l) {
+    root.setAttribute('lang', l);
+    document.documentElement.setAttribute('lang', l);
+    document.getElementById('btn-fr').setAttribute('aria-pressed', l === 'fr');
+    document.getElementById('btn-en').setAttribute('aria-pressed', l === 'en');
+    try { localStorage.setItem('lang', l); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  var nav = (navigator.language || 'fr').toLowerCase();
+  setLang(saved || (nav.indexOf('fr') === 0 ? 'fr' : 'en'));
+  document.getElementById('btn-fr').addEventListener('click', function () { setLang('fr'); });
+  document.getElementById('btn-en').addEventListener('click', function () { setLang('en'); });
+  document.getElementById('copy').addEventListener('click', function () {
+    var text = document.getElementById('email').textContent;
+    var done = function () { var c = document.getElementById('copied'); c.hidden = false; setTimeout(function () { c.hidden = true; }, 2000); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () { selectEmail(); });
+    } else { selectEmail(); }
+  });
+  function selectEmail() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+})();
+</script>
+</body>
+</html>
